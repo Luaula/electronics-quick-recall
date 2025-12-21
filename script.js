@@ -1,4 +1,136 @@
 const components = {
+  capacitor: {
+  function: [
+    "A capacitor is a passive electronic component that stores electrical energy in an electric field between two conductive plates separated by a dielectric material.",
+    "It resists sudden changes in voltage rather than current, making it essential for stabilizing power supplies, filtering signals, and handling transient energy demands.",
+    "Its behavior depends on capacitance value, voltage rating, circuit resistance, and configuration.",
+  ],
+  analogy: [
+    "A capacitor is like a flexible water tank connected to a pipe.",
+    "It absorbs water when pressure rises and releases it when pressure drops, smoothing fluctuations.",
+  ],
+  where: [
+    "power supply smoothing and decoupling",
+    "timing and delay circuits",
+    "signal filtering",
+    "energy buffering in electronic systems",
+  ],
+  mistake: [
+    "Ignoring polarity, voltage rating, or misunderstanding series and parallel behavior.",
+  ],
+  recall: [
+    "Stores and releases energy to stabilize voltage.",
+  ]
+},
+
+diode: {
+    function: [
+      "A diode is a semiconductor component that allows current to flow in one direction only.",
+      "It uses a p-n junction to block current when reverse-biased.",
+      "Diodes are essential for controlling current direction in circuits."
+    ],
+    analogy: [
+      "Like a one-way valve in a pipe.",
+      "Water flows forward, but backward pressure closes the valve."
+    ],
+    where: [
+      "Rectifiers (AC to DC conversion)",
+      "Reverse polarity protection",
+      "Flyback protection in inductive loads",
+      "Signal routing"
+    ],
+    mistake: [
+      "Ignoring forward voltage drop.",
+      "Exceeding reverse voltage ratings."
+    ],
+    recall: [
+      "Current flows in one direction."
+    ]
+  },
+
+  led: {
+  function: [
+    "A LED (Light Emitting Diode) is a semiconductor device that emits light when electric current flows through it.",
+    "It operates like a diode, allowing current to flow in one direction, but converts electrical energy into light instead of heat.",
+    "The color of the light depends on the semiconductor material and its band gap.",
+    "LEDs require current limiting, usually through a resistor, to prevent damage.",
+  ],
+  analogy: [
+    "A LED is like a one-way door that lights up when people walk through it.",
+    "If too many people try to pass at once, the door breaks unless there is a guard controlling the flow (the resistor).",
+  ],
+  where: [
+    "Status indicators in electronic devices",
+    "Displays and lighting systems",
+    "Optical communication",
+    "Debugging and visual feedback in circuits",
+  ],
+  mistake: [
+    "Connecting a LED directly to a voltage source without a resistor.",
+    "Reversing polarity (LEDs do not light in reverse bias).",
+    "Ignoring forward voltage differences between LED colors.",
+  ],
+  recall: [
+    "A diode that emits light and must be current-limited.",
+  ]
+},
+
+mosfet: {
+  function: [
+    "A MOSFET is a semiconductor device used to control the flow of current using an electric field.",
+    "Instead of controlling current directly, it uses a small voltage at the gate to switch or regulate a much larger current between drain and source.",
+    "MOSFETs are commonly used as electronic switches or amplifiers, especially in power and high-current applications.",
+    "Their behavior depends on the type (N-channel or P-channel), threshold voltage, and operating region."
+  ],
+  analogy: [
+    "A MOSFET is like a valve controlled by a remote lever.",
+    "A small movement of the lever (gate voltage) opens or closes a large water flow (drain-source current).",
+    "The lever itself does not carry the water, it only controls the valve."
+  ],
+  where: [
+    "Motor and solenoid control",
+    "Power supplies and voltage regulators",
+    "Electromagnetic projects",
+    "Switching high-current loads with low-power signals"
+  ],
+  mistake: [
+    "Assuming any MOSFET works with logic-level voltages.",
+    "Ignoring heat dissipation and power losses.",
+    "Wiring the MOSFET incorrectly (gate, drain, and source confusion).",
+    "Forgetting flyback protection when driving inductive loads."
+  ],
+  recall: [
+    "A voltage-controlled switch for high-current loads."
+  ]
+},
+
+relay: {
+  function: [
+    "A relay is an electromechanical switch that uses an electromagnet to open or close electrical contacts.",
+    "When current flows through the coil, it creates a magnetic field that physically moves a switch.",
+    "Relays allow a low-power circuit to safely control a high-power or high-voltage circuit.",
+    "They provide electrical isolation between the control side and the load side."
+  ],
+  analogy: [
+    "A relay is like pressing a physical light switch using a magnet instead of your finger.",
+    "A small electrical signal pulls the switch, which turns a completely separate circuit on or off."
+  ],
+  where: [
+    "Controlling high-voltage or high-current loads",
+    "Industrial automation and control panels",
+    "Protective switching and safety systems",
+    "Situations where electrical isolation is required"
+  ],
+  mistake: [
+    "Forgetting to add a flyback diode across the relay coil.",
+    "Driving the relay directly from a microcontroller pin without proper current handling.",
+    "Assuming relays switch instantly (mechanical delay exists)."
+  ],
+  recall: [
+    "A magnet-controlled switch with electrical isolation."
+  ]
+},
+
   resistor: {
     function: [
       "A resistor is a passive electronic component that opposes the flow of electric current.",
@@ -28,83 +160,6 @@ const components = {
     ]
   },
 
-  diode: {
-    function: [
-      "A diode is a semiconductor component that allows current to flow in one direction only.",
-      "It uses a p-n junction to block current when reverse-biased.",
-      "Diodes are essential for controlling current direction in circuits."
-    ],
-    analogy: [
-      "Like a one-way valve in a pipe.",
-      "Water flows forward, but backward pressure closes the valve."
-    ],
-    where: [
-      "Rectifiers (AC to DC conversion)",
-      "Reverse polarity protection",
-      "Flyback protection in inductive loads",
-      "Signal routing"
-    ],
-    mistake: [
-      "Ignoring forward voltage drop.",
-      "Exceeding reverse voltage ratings."
-    ],
-    recall: [
-      "Current flows in one direction."
-    ]
-  },
-
-  capacitor: {
-  function: [
-    "A capacitor is a passive electronic component that stores electrical energy in an electric field between two conductive plates separated by a dielectric material.",
-    "It resists sudden changes in voltage rather than current, making it essential for stabilizing power supplies, filtering signals, and handling transient energy demands.",
-    "Its behavior depends on capacitance value, voltage rating, circuit resistance, and configuration.",
-  ],
-  analogy: [
-    "A capacitor is like a flexible water tank connected to a pipe.",
-    "It absorbs water when pressure rises and releases it when pressure drops, smoothing fluctuations.",
-  ],
-  where: [
-    "Capacitors are commonly used in:",
-    "power supply smoothing and decoupling",
-    "timing and delay circuits",
-    "signal filtering",
-    "energy buffering in electronic systems",
-  ],
-  mistake: [
-    "Ignoring polarity, voltage rating, or misunderstanding series and parallel behavior.",
-  ],
-  recall: [
-    "Stores and releases energy to stabilize voltage.",
-  ]
-},
-
-led: {
-  function: [
-    "A LED (Light Emitting Diode) is a semiconductor device that emits light when electric current flows through it.",
-    "It operates like a diode, allowing current to flow in one direction, but converts electrical energy into light instead of heat.",
-    "The color of the light depends on the semiconductor material and its band gap.",
-    "LEDs require current limiting, usually through a resistor, to prevent damage.",
-  ],
-  analogy: [
-    "A LED is like a one-way door that lights up when people walk through it.",
-    "If too many people try to pass at once, the door breaks unless there is a guard controlling the flow (the resistor).",
-  ],
-  where: [
-    "Status indicators in electronic devices",
-    "Displays and lighting systems",
-    "Optical communication",
-    "Debugging and visual feedback in circuits",
-  ],
-  mistake: [
-    "Connecting a LED directly to a voltage source without a resistor.",
-    "Reversing polarity (LEDs do not light in reverse bias).",
-    "Ignoring forward voltage differences between LED colors.",
-  ],
-  recall: [
-    "A diode that emits light and must be current-limited.",
-  ]
-},
-
 };
 
 function renderSection(title, items) {
@@ -120,7 +175,7 @@ function showComponent(name) {
   const html = `
     <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
 
-    ${renderSection("amougs", c.function)}
+    ${renderSection("Function", c.function)}
     ${renderSection("Simple Analogy", c.analogy)}
     ${renderSection("Where it is common", c.where)}
     ${renderSection("Common mistakes", c.mistake)}
