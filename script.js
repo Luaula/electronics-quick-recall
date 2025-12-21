@@ -1,17 +1,50 @@
-function showComponent(component) {
-  let text = "";
+const components = {
+  resistor: {
+    function: "A resistor limits the flow of electric current in a circuit, causing a voltage drop and protecting components from excessive current.",
+    analogy: "Like a funnel narrowing a hose, making it harder for water (electrons) to pass through.",
+    where: "Found in virtually all electronic devices.",
+    mistake: "Ignoring power rating or assuming resistors behave the same in series and parallel.",
+    recall: "Limits current to protect components."
+  },
 
-  if (component === "resistor") {
-    text = "A resistor limits current in a circuit. I mainly use it to protect LEDs, control voltage levels, and avoid damaging components during tests.";
+  diode: {
+    function: "A diode allows current to flow in only one direction by using a p–n junction.",
+    analogy: "A one-way valve that lets water flow in only one direction.",
+    where: "Used in rectifiers, protection circuits, and signal routing.",
+    mistake: "Ignoring the forward voltage drop or reverse voltage limit.",
+    recall: "Current flows in only one direction."
+  },
+
+  capacitor: {
+    function: "A capacitor stores and releases electrical energy, helping stabilize voltage and filter signals.",
+    analogy: "Like a small rechargeable tank that fills and empties quickly.",
+    where: "Power supplies, timing circuits, signal filtering.",
+    mistake: "Ignoring polarity or voltage rating.",
+    recall: "Stores and releases energy."
   }
+};
 
-  if (component === "capacitor") {
-    text = "A capacitor stores and releases energy. In my projects, it helps smooth voltage, stabilize power supplies, and handle brief energy demands.";
-  }
+function showComponent(name) {
+  const c = components[name];
 
-  if (component === "mosfet") {
-    text = "A MOSFET works as an efficient electronic switch. I use it to control high-current loads with low-power signals, especially in motors and electromagnetic projects.";
-  }
+  const html = `
+    <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
 
-  document.getElementById("description").innerHTML = "<p>" + text + "</p>";
+    <strong>Function</strong>
+    <p>${c.function}</p>
+
+    <strong>Simple Analogy</strong>
+    <p>${c.analogy}</p>
+
+    <strong>Where it is common</strong>
+    <p>${c.where}</p>
+
+    <strong>Common mistake</strong>
+    <p>${c.mistake}</p>
+
+    <strong>Quick recall</strong>
+    <p>${c.recall}</p>
+  `;
+
+  document.getElementById("description").innerHTML = html;
 }
