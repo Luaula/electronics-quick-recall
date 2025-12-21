@@ -51,7 +51,60 @@ const components = {
     recall: [
       "Current flows in one direction."
     ]
-  }
+  },
+
+  capacitor: {
+  function: [
+    "A capacitor is a passive electronic component that stores electrical energy in an electric field between two conductive plates separated by a dielectric material.",
+    "It resists sudden changes in voltage rather than current, making it essential for stabilizing power supplies, filtering signals, and handling transient energy demands.",
+    "Its behavior depends on capacitance value, voltage rating, circuit resistance, and configuration.",
+  ],
+  analogy: [
+    "A capacitor is like a flexible water tank connected to a pipe.",
+    "It absorbs water when pressure rises and releases it when pressure drops, smoothing fluctuations.",
+  ],
+  where: [
+    "Capacitors are commonly used in:",
+    "power supply smoothing and decoupling",
+    "timing and delay circuits",
+    "signal filtering",
+    "energy buffering in electronic systems",
+  ],
+  mistake: [
+    "Ignoring polarity, voltage rating, or misunderstanding series and parallel behavior.",
+  ],
+  recall: [
+    "Stores and releases energy to stabilize voltage.",
+  ]
+},
+
+led: {
+  function: [
+    "A LED (Light Emitting Diode) is a semiconductor device that emits light when electric current flows through it.",
+    "It operates like a diode, allowing current to flow in one direction, but converts electrical energy into light instead of heat.",
+    "The color of the light depends on the semiconductor material and its band gap.",
+    "LEDs require current limiting, usually through a resistor, to prevent damage.",
+  ],
+  analogy: [
+    "A LED is like a one-way door that lights up when people walk through it.",
+    "If too many people try to pass at once, the door breaks unless there is a guard controlling the flow (the resistor).",
+  ],
+  where: [
+    "Status indicators in electronic devices",
+    "Displays and lighting systems",
+    "Optical communication",
+    "Debugging and visual feedback in circuits",
+  ],
+  mistake: [
+    "Connecting a LED directly to a voltage source without a resistor.",
+    "Reversing polarity (LEDs do not light in reverse bias).",
+    "Ignoring forward voltage differences between LED colors.",
+  ],
+  recall: [
+    "A diode that emits light and must be current-limited.",
+  ]
+},
+
 };
 
 function renderSection(title, items) {
@@ -67,7 +120,7 @@ function showComponent(name) {
   const html = `
     <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
 
-    ${renderSection("Function", c.function)}
+    ${renderSection("amougs", c.function)}
     ${renderSection("Simple Analogy", c.analogy)}
     ${renderSection("Where it is common", c.where)}
     ${renderSection("Common mistakes", c.mistake)}
