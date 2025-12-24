@@ -1,4 +1,61 @@
 const components = {
+  button: {
+  function: [
+    "A button or switch is an input component that allows a user to open or close an electrical circuit.",
+    "When pressed or toggled, it changes the circuit state by allowing or interrupting current flow.",
+    "Buttons are typically momentary, while switches usually maintain their state until changed.",
+    "They translate human action into an electrical signal that a circuit or microcontroller can interpret."
+  ],
+  analogy: [
+    "A button is like a doorbell: it only works while you press it.",
+    "A switch is like a light switch at home: it stays on or off until you change it."
+  ],
+  where: [
+    "User input interfaces",
+    "Microcontroller projects",
+    "Control panels and appliances",
+    "Mode selection and system activation"
+  ],
+  mistake: [
+    "Ignoring contact bounce, causing multiple unintended signals.",
+    "Forgetting to use pull-up or pull-down resistors.",
+    "Assuming all buttons behave the same (momentary vs latching)."
+  ],
+  recall: [
+    "Transforms human action into an electrical signal."
+  ]
+},
+
+bjt: {
+  function: [
+    "A BJT (Bipolar Junction Transistor) is an active semiconductor device used to amplify or switch electronic signals.",
+    "It operates by using a small current at the base terminal to control a much larger current flowing between collector and emitter.",
+    "This makes the BJT a current-controlled device, unlike voltage-controlled transistors.",
+    "BJTs are commonly used in amplification stages, signal processing, and low-to-medium power switching.",
+    "Their behavior depends on biasing conditions, current gain (β or hFE), and operating region."
+  ],
+  analogy: [
+    "A BJT is like a valve controlled by how hard you push it.",
+    "A small push (base current) allows a much larger flow to pass through.",
+    "The harder you push, the more flow is allowed."
+  ],
+  where: [
+    "Signal amplification (audio amplifiers, sensors)",
+    "Analog circuits",
+    "Switching low-power loads",
+    "Oscillators and waveform generators",
+    "Educational and foundational electronics"
+  ],
+  mistake: [
+    "Assuming the base does not draw current.",
+    "Improper biasing leading to cutoff or saturation.",
+    "Using a BJT where a MOSFET would be more efficient."
+  ],
+  recall: [
+    "Small base current controls a larger current."
+  ]
+},
+
   capacitor: {
   function: [
     "A capacitor is a passive electronic component that stores electrical energy in an electric field between two conductive plates separated by a dielectric material.",
@@ -47,6 +104,33 @@ diode: {
       "Current flows in one direction."
     ]
   },
+
+  inductor: {
+  function: [
+    "An inductor is a passive electronic component that stores energy in a magnetic field when current flows through it.",
+    "It resists sudden changes in current rather than voltage, opposing rapid increases or decreases in current flow.",
+    "This behavior makes inductors essential in power regulation, filtering, and energy transfer systems."
+  ],
+  analogy: [
+    "An inductor is like a heavy flywheel in a mechanical system.",
+    "It resists sudden changes in speed, keeping motion smooth and continuous.",
+    "In a circuit, current cannot change instantly because the inductor pushes back."
+  ],
+  where: [
+    "Switch-mode power supplies",
+    "Filters (low-pass, high-pass, LC circuits)",
+    "Energy storage in converters (buck, boost)",
+    "Electromagnets, motors, and relays"
+  ],
+  mistake: [
+    "Ignoring flyback voltage when switching inductive loads.",
+    "Assuming inductors behave the same as resistors.",
+    "Neglecting core saturation and current limits."
+  ],
+  recall: [
+    "Resists changes in current by storing energy magnetically."
+  ]
+},
 
   led: {
   function: [
