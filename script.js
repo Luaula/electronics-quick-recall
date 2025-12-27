@@ -275,14 +275,14 @@ const comparisons = {
     ]
     },
     tradeoff: [
-      "BJTs draw base current → continuous power loss",
+      "BJTs draw base current -> continuous power loss",
       "MOSFET gates draw almost no steady-state current",
       "BJTs are easier to bias for analog behavior",
       "MOSFETs switch faster and scale better with power",
     ],
     rule: [
-      "If you think in current → BJT",
-      "If you think in voltage → MOSFET",
+      "If you think in current -> BJT",
+      "If you think in voltage -> MOSFET",
     ],
     mistake: [
       "Using a BJT expecting it to behave like a MOSFET",
@@ -314,8 +314,8 @@ const comparisons = {
     "MOSFETs are solid-state and efficient"
     ],
     rule: [
-    "Isolation or AC → Relay",
-    "Speed and efficiency → MOSFET"
+    "Isolation or AC -> Relay",
+    "Speed and efficiency -> MOSFET"
     ],
     mistake: [
     "Forgetting flyback diode on relay",
@@ -324,12 +324,15 @@ const comparisons = {
  },
 };
 
-function renderSection(title, items) {
+function renderSection(title, items, type) {
   return `
-    <strong>${title}</strong>
-    ${items.map(text => `<p>${text}</p>`).join("")}
+    <div class="card card-${type}">
+      <h4>${title}</h4>
+      ${items.map(text => `<p>${text}</p>`).join("")}
+    </div>
   `;
 }
+
 
 function scrollToDescription() {
   document.getElementById("description").scrollIntoView({
@@ -366,12 +369,15 @@ function showComponent(name) {
   const html = `
     <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
 
-    ${renderSection("Function", c.function)}
-    ${renderSection("Simple Analogy", c.analogy)}
-    ${renderSection("Where it is common", c.where)}
-    ${renderSection("Common mistakes", c.mistake)}
-    ${renderSection("Quick recall", c.recall)}
-  `;
+    <div class="cards-grid">
+      ${renderSection("Function", c.function, "function")}
+      ${renderSection("Simple Analogy", c.analogy, "analogy")}
+      ${renderSection("Where it is common", c.where, "where")}
+      ${renderSection("Common mistakes", c.mistake, "mistake")}
+      ${renderSection("Quick recall", c.recall, "recall")}
+    </div>
+`;
+
 
   document.getElementById("description").innerHTML = html;
 
@@ -390,14 +396,17 @@ function showComparison(key) {
   document.getElementById("description").innerHTML = "";
   
   const html = `
-    <h2>${comp.title}</h2>
+  <h2>${comp.title}</h2>
 
-    ${renderSection(`When to use ${comp.left.name}`, comp.left.when)}
-    ${renderSection(`When to use ${comp.right.name}`, comp.right.when)}
-    ${renderSection("Key trade-offs", comp.tradeoff)}
-    ${renderSection("Rule of thumb", comp.rule)}
-    ${renderSection("Common mistakes", comp.mistake)}
-  `;
+    <div class="cards-grid">
+      ${renderSection(`When to use ${comp.left.name}`, comp.left.when, "where")}
+      ${renderSection(`When to use ${comp.right.name}`, comp.right.when, "where")}
+      ${renderSection("Key trade-offs", comp.tradeoff, "function")}
+      ${renderSection("Rule of thumb", comp.rule, "recall")}
+      ${renderSection("Common mistakes", comp.mistake, "mistake")}
+    </div>
+`;
+
 
   document.getElementById("comparison-output").innerHTML = html;
 
