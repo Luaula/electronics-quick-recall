@@ -118,5 +118,64 @@ button {
 }
 
 button:active {
-  transform: scale(0.97);
+  transform: scale(0.9);
+}
+
+.study-mode .card-function,
+.study-mode .card-analogy,
+.study-mode .card-where,
+.study-mode .card-mistake {
+  display: none;
+}
+
+body {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.study-mode {
+  background: #0f1115;
+  color: #e6e6e6;
+}
+
+.study-mode h1,
+.study-mode h2,
+.study-mode h3,
+.study-mode h4,
+.study-mode p {
+  color: #e6e6e6;
+}
+
+.study-mode h2 {
+  border-bottom-color: #333;
+}
+
+.study-mode .card {
+  background: #181b22;
+  border-color: #2a2e3a;
+}
+
+.study-mode .card-analogy {
+  background: #1e2433;
+  border-color: #3a4a7a;
+}
+
+.study-mode .card-mistake {
+  background: #2a1618;
+  border-color: #8a3a3a;
+}
+
+.study-mode .card-recall {
+  background: #163020;
+  border-color: #3fa36c;
+}
+
+.study-mode button {
+  background: #1c1f26;
+  color: #e6e6e6;
+  border-color: #333;
+}
+
+.study-mode button.active {
+  background: #3a3f4b;
+  border-color: #5c6cff;
 }

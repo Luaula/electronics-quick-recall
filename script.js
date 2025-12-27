@@ -1,3 +1,13 @@
+const studyToggle = document.getElementById("study-toggle");
+let studyMode = false;
+
+studyToggle.onclick = () => {
+  studyMode = !studyMode;
+
+  document.body.classList.toggle("study-mode", studyMode);
+  studyToggle.classList.toggle("active", studyMode);
+};
+
 function setActiveButton(clickedButton) {
   const allButtons = document.querySelectorAll("button");
   allButtons.forEach(btn => btn.classList.remove("active"));
