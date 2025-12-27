@@ -9,21 +9,23 @@
 <h1>Electronics Quick Recall</h1>
 <p>A personal maker tool to revisit core electronics concepts.</p>
 
-<div id="components">
-  <button onclick="setActiveButton(this); showComponent('button')">Button</button>
-  <button onclick="setActiveButton(this); showComponent('bjt')">BJT</button>
-  <button onclick="setActiveButton(this); showComponent('capacitor')">Capacitor</button> 
-  <button onclick="setActiveButton(this); showComponent('diode')">Diode</button>
-  <button onclick="setActiveButton(this); showComponent('inductor')">Inductor</button>
-  <button onclick="setActiveButton(this); showComponent('led')">LED</button>
-  <button onclick="setActiveButton(this); showComponent('mosfet')">MOSFET</button>
-  <button onclick="setActiveButton(this); showComponent('relay')">Relay</button>
-  <button onclick="setActiveButton(this); showComponent('resistor')">Resistor</button>
-</div>
+<section id="components-section">
+  <div id="components">
+    <button onclick="setActiveButton(this); showComponent('button')">Button</button>
+    <button onclick="setActiveButton(this); showComponent('bjt')">BJT</button>
+    <button onclick="setActiveButton(this); showComponent('capacitor')">Capacitor</button>
+    <button onclick="setActiveButton(this); showComponent('diode')">Diode</button>
+    <button onclick="setActiveButton(this); showComponent('inductor')">Inductor</button>
+    <button onclick="setActiveButton(this); showComponent('led')">LED</button>
+    <button onclick="setActiveButton(this); showComponent('mosfet')">MOSFET</button>
+    <button onclick="setActiveButton(this); showComponent('relay')">Relay</button>
+    <button onclick="setActiveButton(this); showComponent('resistor')">Resistor</button>
+  </div>
 
-<div id="description">
-  <p>Select a component to see its description.</p>
-</div>
+  <div id="description">
+    <p>Select a component to see its description.</p>
+  </div>
+</section>
 
 <script src="script.js"></script>
 

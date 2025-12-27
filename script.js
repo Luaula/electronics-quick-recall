@@ -331,9 +331,37 @@ function renderSection(title, items) {
   `;
 }
 
+function scrollToDescription() {
+  document.getElementById("description").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function scrollToComparison() {
+  document.getElementById("comparisons-section").scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+function clearComponentContent() {
+  document.getElementById("description").innerHTML =
+    "<p>Select a component to see its description.</p>";
+}
+
+function clearComparisonContent() {
+  document.getElementById("comparison-output").innerHTML = "";
+}
+
 function showComponent(name) {
+  clearComparisonContent();
+
   const c = components[name];
   if (!c) return;
+
+  document.getElementById("comparisons-section").classList.add("inactive");
+  document.getElementById("components-section").classList.remove("inactive");
+
+  document.getElementById("comparison-output").innerHTML = "";
 
   const html = `
     <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
@@ -346,11 +374,21 @@ function showComponent(name) {
   `;
 
   document.getElementById("description").innerHTML = html;
+
+  scrollToDescription();
 }
 
 function showComparison(key) {
-  const comp = comparisons[key];
+  clearComponentContent();
 
+  const comp = comparisons[key];
+  if (!comp) return;
+
+  document.getElementById("components-section").classList.add("inactive");
+  document.getElementById("comparisons-section").classList.remove("inactive");
+
+  document.getElementById("description").innerHTML = "";
+  
   const html = `
     <h2>${comp.title}</h2>
 
@@ -362,4 +400,6 @@ function showComparison(key) {
   `;
 
   document.getElementById("comparison-output").innerHTML = html;
+
+  scrollToComparison()
 }
