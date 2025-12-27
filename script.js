@@ -1,3 +1,9 @@
+function setActiveButton(clickedButton) {
+  const allButtons = document.querySelectorAll("button");
+  allButtons.forEach(btn => btn.classList.remove("active"));
+  clickedButton.classList.add("active");
+}
+
 const components = {
   button: {
   function: [
@@ -246,6 +252,78 @@ relay: {
 
 };
 
+const comparisons = {
+  bjt_vs_mosfet: {
+    title: "BJT vs MOSFET - Choosing the right transistor",
+    left: {
+     name: "BJT",
+     when: [
+      "When precise current control matters",
+      "When circuit simplicity is more important than efficiency",
+      "In low-to-medium power applications",
+      "In educational and foundational electronics",
+    ] 
+  },
+    right: {
+     name: "MOSFET",
+     when: [
+      "When high efficiency is required",
+      "For switching high-current loads",
+      "When using microcontrollers (voltage-driven gate)",
+      "In power electronics (SMPS, motor drivers)",
+      "When minimal control current is desired",
+    ]
+    },
+    tradeoff: [
+      "BJTs draw base current → continuous power loss",
+      "MOSFET gates draw almost no steady-state current",
+      "BJTs are easier to bias for analog behavior",
+      "MOSFETs switch faster and scale better with power",
+    ],
+    rule: [
+      "If you think in current → BJT",
+      "If you think in voltage → MOSFET",
+    ],
+    mistake: [
+      "Using a BJT expecting it to behave like a MOSFET",
+      "Driving a MOSFET without checking gate threshold",
+      "Ignoring heat dissipation in both devices",
+    ]
+  },
+
+  relay_vs_mosfet: {
+    title: "Relay vs MOSFET - Choosing the right switch",
+    left: {
+     name: "Relay",
+     when: [
+      "Complete electrical isolation",
+      "Switching AC mains voltage",
+      "Simple low-frequency ON/OFF control"
+    ]
+  },
+    right: {
+     name: "MOSFET",
+     when: [
+      "Fast switching",
+      "DC circuits",
+      "Microcontroller-controlled loads"
+    ]
+  },
+    tradeoff: [
+    "Relays are mechanical and slower",
+    "MOSFETs are solid-state and efficient"
+    ],
+    rule: [
+    "Isolation or AC → Relay",
+    "Speed and efficiency → MOSFET"
+    ],
+    mistake: [
+    "Forgetting flyback diode on relay",
+    "Improper MOSFET gate drive"
+    ]
+ },
+};
+
 function renderSection(title, items) {
   return `
     <strong>${title}</strong>
@@ -255,6 +333,7 @@ function renderSection(title, items) {
 
 function showComponent(name) {
   const c = components[name];
+  if (!c) return;
 
   const html = `
     <h2>${name.charAt(0).toUpperCase() + name.slice(1)}</h2>
@@ -267,4 +346,20 @@ function showComponent(name) {
   `;
 
   document.getElementById("description").innerHTML = html;
+}
+
+function showComparison(key) {
+  const comp = comparisons[key];
+
+  const html = `
+    <h2>${comp.title}</h2>
+
+    ${renderSection(`When to use ${comp.left.name}`, comp.left.when)}
+    ${renderSection(`When to use ${comp.right.name}`, comp.right.when)}
+    ${renderSection("Key trade-offs", comp.tradeoff)}
+    ${renderSection("Rule of thumb", comp.rule)}
+    ${renderSection("Common mistakes", comp.mistake)}
+  `;
+
+  document.getElementById("comparison-output").innerHTML = html;
 }

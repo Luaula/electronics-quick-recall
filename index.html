@@ -10,15 +10,15 @@
 <p>A personal maker tool to revisit core electronics concepts.</p>
 
 <div id="components">
-  <button onclick="showComponent('button')">Button</button>
-  <button onclick="showComponent('bjt')">BJT</button>
-  <button onclick="showComponent('capacitor')">Capacitor</button>
-  <button onclick="showComponent('diode')">Diode</button>
-  <button onclick="showComponent('inductor')">Inductor</button>
-  <button onclick="showComponent('led')">LED</button>
-  <button onclick="showComponent('mosfet')">MOSFET</button>
-  <button onclick="showComponent('relay')">Relay</button>
-  <button onclick="showComponent('resistor')">Resistor</button>
+  <button onclick="setActiveButton(this); showComponent('button')">Button</button>
+  <button onclick="setActiveButton(this); showComponent('bjt')">BJT</button>
+  <button onclick="setActiveButton(this); showComponent('capacitor')">Capacitor</button> 
+  <button onclick="setActiveButton(this); showComponent('diode')">Diode</button>
+  <button onclick="setActiveButton(this); showComponent('inductor')">Inductor</button>
+  <button onclick="setActiveButton(this); showComponent('led')">LED</button>
+  <button onclick="setActiveButton(this); showComponent('mosfet')">MOSFET</button>
+  <button onclick="setActiveButton(this); showComponent('relay')">Relay</button>
+  <button onclick="setActiveButton(this); showComponent('resistor')">Resistor</button>
 </div>
 
 <div id="description">
@@ -26,6 +26,20 @@
 </div>
 
 <script src="script.js"></script>
+
+<hr>
+
+<section id="comparisons-section">
+  <h3>Wanna see some comparisons?</h3>
+  <p>Check this out!</p>
+
+  <div id="comparisons-buttons">
+    <button onclick="setActiveButton(this); showComparison('bjt_vs_mosfet')">BJT vs MOSFET</button>
+    <button onclick="setActiveButton(this); showComparison('relay_vs_mosfet')">Relay vs MOSFET</button>
+  </div>
+
+  <div id="comparison-output"></div>
+</section>
 
 </body>
 </html>
